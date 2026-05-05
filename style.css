@@ -1,0 +1,156 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent: #3b82f6;
+    --critical: #ef4444;
+    --high: #f59e0b;
+    --normal: #10b981;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.hud-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.controls input,
+.controls button {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.controls button {
+    cursor: pointer;
+    background: var(--accent);
+}
+
+.ticket-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ticket-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-Normal {
+    background-color: var(--normal);
+}
+
+.status-High {
+    background-color: var(--high);
+}
+
+.status-Critical {
+    background-color: var(--critical);
+    color: white;
+}
+
+/* The agreed MVP feature: Pulsing CSS animation for critical tickets */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 5px var(--critical), inset 0 0 5px var(--critical);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--critical), inset 0 0 10px var(--critical);
+    }
+
+    100% {
+        box-shadow: 0 0 5px var(--critical), inset 0 0 5px var(--critical);
+    }
+}
+
+.pulsing-red {
+    animation: pulseGlow 1.5s infinite;
+    border-color: var(--critical);
+}
+
+.sync-failed {
+    border-color: var(--critical);
+    opacity: 0.8;
+    animation: none;
+    /* Override pulsing-red so failure state is visually distinct */
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 15px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+}

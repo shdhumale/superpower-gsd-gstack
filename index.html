@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher HUD - Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hud-container">
+        <header class="hud-header">
+            <h1>SYSTEM Triage</h1>
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="Search... (Press '/' to focus)">
+                <button id="newTicketBtn">New Ticket (c)</button>
+            </div>
+        </header>
+        
+        <main class="ticket-board">
+            <div class="status-summary" id="statusSummary">
+                <!-- Status counters will go here -->
+            </div>
+            <ul id="ticketList" class="ticket-list">
+                <!-- Tickets appended here -->
+            </ul>
+        </main>
+    </div>
+
+    <!-- Modal for New Ticket -->
+    <div id="ticketModal" class="modal hidden">
+        <div class="modal-content glass">
+            <h2>New Ticket</h2>
+            <input type="text" id="ticketTitle" placeholder="Title" required>
+            <textarea id="ticketDesc" placeholder="Description"></textarea>
+            <select id="ticketStatus">
+                <option value="Normal">Normal</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+            </select>
+            <div class="modal-actions">
+                <button id="submitTicketBtn" class="primary">Submit</button>
+                <button id="closeModalBtn">Cancel (Esc)</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>
